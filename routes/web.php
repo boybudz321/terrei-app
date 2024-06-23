@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\HomeController;
+use App\Models\menu;
 
 Route::get('/', function () {
     $menus = menu::all();

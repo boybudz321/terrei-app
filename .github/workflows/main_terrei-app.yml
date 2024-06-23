@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
@@ -61,6 +61,6 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'terrei-app'
-          slot-name: 'Production'
+          slot-name: 'production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AB189D5BF2C6480B88A3F6804C535216 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_a8caebf306dc42b0a1dcddba94c3349a }}

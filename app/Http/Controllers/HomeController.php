@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('guest');
     }
 
     /**
@@ -37,7 +37,7 @@ class HomeController extends Controller
     public function update(Request $request)
     {
         $menu = menu::find($request->id);
-        
+
         switch ($request->type) {
             case 'menu':
                 $menu->menu_name = $request->value;
@@ -63,7 +63,7 @@ class HomeController extends Controller
                 $menu->url = $request->value;
                 $menu->save();
                 break;
-            
+
             default:
                 return response()->json([
                     'message' => 'Error Occured'

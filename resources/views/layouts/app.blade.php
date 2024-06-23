@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link type="text/css" href="{{ asset('assets/vendor/toastr.min.css') }}" rel="stylesheet">
     <!-- jQuery -->
-<script src="{{ asset('assets/vendor/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jquery.min.js') }}"></script>
     <style>
         .inline-icon {
    vertical-align: bottom;

@@ -22,12 +22,11 @@
                             return random_color_part() . random_color_part() . random_color_part();
                         }
                     ?>
-                    
+
                     <div class="container" style="height:800px; width:800px;">
                         <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if($m->spin == 0): ?>
                             <div class="" >
-                                
                                 
                                 <i class="gear fa fa-<?php echo e($m->size); ?>x fa-gear spin" style="margin-top:<?php echo e($m->y_axis); ?>px; margin-left:<?php echo e($m->x_axis); ?>px;"></i>
                                 <strong>
@@ -38,15 +37,15 @@
                                 transform: translate(-15%, -15%);"><?php echo e($m->menu_name); ?></a>
                                 </strong>
                             </div>
-                            
+
                         <?php else: ?>
                         <div class="" >
-                                
+
                             
                             <i class="gear fa fa-<?php echo e($m->size); ?>x fa-gear spin-back" style="margin-top:<?php echo e($m->y_axis); ?>px;margin-left:<?php echo e($m->x_axis); ?>px;"></i>
                             <strong>
-                                <a href="<?php echo e($m->url); ?>" style="
-                             color: rgb(45, 49, 255);
+                            <a href="<?php echo e($m->url); ?>" style="
+                            color: rgb(45, 49, 255);
                             position: absolute;
                             margin-top:<?php echo e($m->y_axis + (($m->size * 5) + 5)); ?>px;margin-left:<?php echo e($m->x_axis + (($m->size * 5) - 10)); ?>px;
                             transform: translate(-15%, -15%);"><?php echo e($m->menu_name); ?></a>

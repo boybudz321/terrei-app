@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('y_axis');
             $table->integer('x_axis');
             $table->integer('spin');
+            $table->string('url');
+            $table->string('color');
             $table->timestamps();
         });
 
@@ -27,7 +29,8 @@ return new class extends Migration
                 'size' => 5,
                 'y_axis' => 400,
                 'x_axis' => 300,
-                'spin' => 0
+                'spin' => 0,
+                'url' => 'http://www.google.com'
             ],
         ]);
     }

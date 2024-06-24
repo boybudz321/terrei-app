@@ -12,16 +12,26 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="https://terrei-app.azurewebsites.net/css/app.css" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link type="text/css" href="{{ asset('assets/vendor/toastr.min.css') }}" rel="stylesheet">
+
     <!-- jQuery -->
     <script src="{{ asset('assets/vendor/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
     <style>
         .inline-icon {
-   vertical-align: bottom;
-   font-size: 18px !important;
-}
+            vertical-align: bottom;
+            font-size: 18px !important;
+        }
+
         #gear1,
         #gear2,
         #gear3,
@@ -65,13 +75,13 @@
     left: 200px;
 } */
 
-        .spin {
+        .spin:hover {
             -webkit-animation: spin 4s linear infinite;
             -moz-animation: spin 4s linear infinite;
             animation: spin 4s linear infinite;
         }
 
-        .spin-back {
+        .spin-back:hover {
             -webkit-animation: spin-back 4s linear infinite;
             -moz-animation: spin-back 4s linear infinite;
             animation: spin-back 4s linear infinite;
@@ -117,23 +127,23 @@
         }
 
         .fa-6x {
-            font-size: 6em;
+            font-size: 8em !important;
         }
 
         .fa-7x {
-            font-size: 7em;
+            font-size: 11em !important;
         }
 
         .fa-8x {
-            font-size: 8em;
+            font-size: 14em !important;
         }
 
         .fa-9x {
-            font-size: 9em;
+            font-size: 16em !important;
         }
 
         .fa-10x {
-            font-size: 10em;
+            font-size: 20em !important;
         }
     </style>
 </head>
@@ -210,11 +220,11 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- Toastr -->
-<script src="{{ asset('assets/vendor/toastr.min.js') }}"></script>
-<script src="{{ asset('assets/js/toastr.js') }}"></script>
+    <script src="{{ asset('assets/vendor/toastr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/toastr.js') }}"></script>
     <script>
-        $(document).ready(function () {
-            $('body').on('click','.deluser', function (e) {
+        $(document).ready(function() {
+            $('body').on('click', '.deluser', function(e) {
                 e.preventDefault();
                 var data = {
                     _token: '{{ csrf_token() }}',
@@ -226,11 +236,11 @@
                         url: "{{ route('delete') }}",
                         data: data,
                         dataType: "json",
-                        success: function (response) {
-                            toastr.success('Menu has been deleted','Success');
+                        success: function(response) {
+                            toastr.success('Menu has been deleted', 'Success');
                             window.setTimeout(function() {
-                                    location.reload();
-                                }, 2500);
+                                location.reload();
+                            }, 2500);
                         },
                     });
                 } else {
@@ -238,15 +248,15 @@
                 }
             });
 
-            $('body').on('submit', '#userform', function (e) {
+            $('body').on('submit', '#userform', function(e) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
                     url: "{{ route('add') }}",
                     data: $('#userform').serialize(),
                     dataType: "json",
-                    success: function (response) {
-                        toastr.success('Menu has been added','Success');
+                    success: function(response) {
+                        toastr.success('Menu has been added', 'Success');
                         window.setTimeout(function() {
                             location.reload();
                         }, 1500);
@@ -255,7 +265,7 @@
             });
 
 
-            $('body').on('keyup', '.edits_menu_name', function (e) {
+            $('body').on('keyup', '.edits_menu_name', function(e) {
                 if (this.value.length > 0) {
                     e.preventDefault();
                     console.log($(this).val());
@@ -269,14 +279,14 @@
                             value: $(this).val(),
                         },
                         dataType: "json",
-                        success: function (response) {
-                            toastr.success('Menu has been updated','Success');
+                        success: function(response) {
+                            toastr.success('Menu has been updated', 'Success');
                         }
                     });
                 }
             });
 
-            $('body').on('keyup', '.edits_size', function (e) {
+            $('body').on('keyup', '.edits_size', function(e) {
                 if (this.value.length > 0) {
                     e.preventDefault();
                     console.log($(this).val());
@@ -290,14 +300,14 @@
                             value: $(this).val(),
                         },
                         dataType: "json",
-                        success: function (response) {
-                            toastr.success('Menu has been updated','Success');
+                        success: function(response) {
+                            toastr.success('Menu has been updated', 'Success');
                         }
                     });
                 }
             });
 
-            $('body').on('keyup', '.edits_y_axis', function (e) {
+            $('body').on('keyup', '.edits_y_axis', function(e) {
                 if (this.value.length > 0) {
                     e.preventDefault();
                     console.log($(this).val());
@@ -311,13 +321,13 @@
                             value: $(this).val(),
                         },
                         dataType: "json",
-                        success: function (response) {
-                            toastr.success('Menu has been updated','Success');
+                        success: function(response) {
+                            toastr.success('Menu has been updated', 'Success');
                         }
                     });
                 }
             });
-            $('body').on('keyup', '.edits_x_axis', function (e) {
+            $('body').on('keyup', '.edits_x_axis', function(e) {
                 if (this.value.length > 0) {
                     e.preventDefault();
                     console.log($(this).val());
@@ -331,13 +341,13 @@
                             value: $(this).val(),
                         },
                         dataType: "json",
-                        success: function (response) {
-                            toastr.success('Menu has been updated','Success');
+                        success: function(response) {
+                            toastr.success('Menu has been updated', 'Success');
                         }
                     });
                 }
             });
-            $('body').on('keyup', '.edits_spin', function (e) {
+            $('body').on('keyup', '.edits_spin', function(e) {
                 if (this.value.length > 0) {
                     e.preventDefault();
                     console.log($(this).val());
@@ -351,14 +361,14 @@
                             value: $(this).val(),
                         },
                         dataType: "json",
-                        success: function (response) {
-                            toastr.success('Menu has been updated','Success');
+                        success: function(response) {
+                            toastr.success('Menu has been updated', 'Success');
                         }
                     });
                 }
             });
 
-            $('body').on('keyup', '.edits_url', function (e) {
+            $('body').on('keyup', '.edits_url', function(e) {
                 if (this.value.length > 0) {
                     e.preventDefault();
                     console.log($(this).val());
@@ -372,8 +382,8 @@
                             value: $(this).val(),
                         },
                         dataType: "json",
-                        success: function (response) {
-                            toastr.success('Menu has been updated','Success');
+                        success: function(response) {
+                            toastr.success('Menu has been updated', 'Success');
                         }
                     });
                 }

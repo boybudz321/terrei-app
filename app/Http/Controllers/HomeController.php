@@ -25,13 +25,13 @@ class HomeController extends Controller
     public function index()
     {
         $menus = menu::all();
-        return view('home',compact('menus'));
+        return view('home2',compact('menus'));
     }
 
     public function edit(Request $request)
     {
         $menus = menu::all();
-        return view('menu', compact('menus'));
+        return view('menu2', compact('menus'));
     }
 
     public function update(Request $request)
@@ -63,7 +63,10 @@ class HomeController extends Controller
                 $menu->url = $request->value;
                 $menu->save();
                 break;
-
+            case 'color':
+                $menu->color = $request->value;
+                $menu->save();
+                break;
             default:
                 return response()->json([
                     'message' => 'Error Occured'

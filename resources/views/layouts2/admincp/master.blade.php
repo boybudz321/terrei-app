@@ -15,6 +15,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/ez-logo.png') }}">
@@ -39,6 +40,116 @@
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
     </script>
     <style>
+
+.icon{
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: $icon-size;
+  height: $icon-size;
+  margin-left: $icon-size/5;
+  margin-right: $icon-size/5;
+  border-radius: $icon-size*$border-radius;
+  overflow: hidden;
+  &::before, &::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: all 0.25s ease;
+    border-radius: $icon-size*$border-radius;
+  }
+  i{
+    position: relative;
+    color: $white;
+    font-size: $icon-size/2;
+    margin-top: $icon-size/4;
+    transition: all 0.25s ease;
+  }
+}
+
+.icon-fill{
+  &::before{
+    transition-duration: 0.5s;
+    box-shadow: inset 0 0 0 1px $green;
+  }
+  &:hover::before{
+    box-shadow: inset 0 0 0 $icon-size $green;
+  }
+}
+
+.icon-enter{
+  &::after{
+    box-shadow: inset 0 0 0 1px $orange;
+  }
+  &::before{
+    border-radius: 0;
+    margin-left: -100%;
+    box-shadow: inset 0 0 0 $icon-size $orange;
+  }
+  &:hover::before{
+    margin-left: 0;
+  }
+}
+
+.icon-expand{
+  &::after{
+    box-shadow: inset 0 0 0 1px $red;
+  }
+  &::before{
+    background: $red;
+    box-shadow: inset 0 0 0 $icon-size $background;
+  }
+  &:hover::before{
+    box-shadow: inset 0 0 0 1px $background;
+  }
+}
+
+.icon-collapse{
+  &::before{
+    border-radius: 0;
+  }
+  &:hover::before{
+    box-shadow:
+    inset 0 $icon-size/2 0 0 $green-l,
+    inset 0 $icon-size/-2 0 0 $green-l;
+  }
+  &::after{
+    box-shadow: inset 0 0 0 1px $green-l;
+  }
+}
+
+.icon-rotate{
+  box-shadow: inset 0 0 0 1px $purple;
+  &::after, &::before{
+    border: 0px solid transparent;
+  }
+  &:hover::before{
+    transition:
+      border-top-width 0.3s ease,
+      border-top-color 0.3s ease;
+    border-width: $icon-size;
+    border-top-color: $purple;
+  }
+  &:hover::after{
+    transition:
+      border-left-width 0.3s ease,
+      border-left-color 0.3s ease;
+    border-width: $icon-size;
+    border-left-color: $purple;
+  }
+  &:hover{
+    transition: background 0.001s ease 0.3s;
+    background: $purple;
+  }
+  i{
+    z-index: 1;
+  }
+}
+
+
         .inline-icon {
             vertical-align: bottom;
             font-size: 18px !important;
@@ -112,6 +223,14 @@
             animation: spin-back 4s linear infinite;
         }
 
+        .gear:hover{
+            border-radius:50%;
+            box-shadow: 0 0 5px #FFE469;
+            transition: all 0.75s ease;
+            opacity: 1;
+            transform: scale(1.3);
+        }
+
         @-moz-keyframes spin {
             100% {
                 -moz-transform: rotate(360deg);
@@ -168,6 +287,10 @@
 
         .fa-10x {
             font-size: 10em !important;
+        }
+
+        .fa-20x{
+            font-size: 20em !important;
         }
 
     </style>
